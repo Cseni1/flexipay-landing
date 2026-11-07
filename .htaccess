@@ -1,0 +1,3 @@
+# Files that live in the Git repo but must not be served to visitors.
+RedirectMatch 404 ^/(\.git|\.github)(/|$)
+RedirectMatch 404 ^/README\.md$

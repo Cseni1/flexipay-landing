@@ -29,3 +29,7 @@ Direct pushes to `main` are blocked: every change goes through a pull request.
 The site is an early-access marketing site, not a live payment application. No invented testimonials, live integrations, country coverage, transaction speeds or savings claims. No analytics or third-party tracking scripts; if any are added, update `privacy.html`.
 
 Enquiries go to hello@getflexipay.app. The early-access form opens the visitor's email app with a draft; it does not store leads.
+
+## Deployment
+
+Hostinger watches `main` of this repo (Git auto-deployment on getflexipay.app, connected 7 Nov 2026). The server copy is replaced on every push to `main`, so never edit files in Hostinger's file manager: the next merge would overwrite them.

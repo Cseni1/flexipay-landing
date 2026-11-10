@@ -108,7 +108,7 @@ if (race) {
     const k = corridors[c++ % corridors.length];
     $('#r-send').textContent = k.send; $('#r-cur').textContent = k.cur; $('#r-flag').textContent = k.flag;
     foot.classList.remove('done'); sigEl.textContent = 'Asking every route for a quote…';
-    list.innerHTML = k.routes.map(r => `<div class="route"><span class="ico">${r[0]}</span><span class="rname">Route ${r[0]} · ${r[1]}<small>${r[2]}</small></span><span class="rval loading">${fmt(r[3], k.sym)}</span><span class="bar"></span><span class="badge">Best route</span></div>`).join('');
+    list.innerHTML = k.routes.map(r => `<div class="route"><span class="ico">${r[0]}</span><span class="rname">${r[1]}<small>Route ${r[0]} · ${r[2]}</small></span><span class="rval loading">${fmt(r[3], k.sym)}</span><span class="bar"></span><span class="badge">Best route</span></div>`).join('');
     const rows = $$('.route', list), max = Math.max(...k.routes.map(r => r[3])), min = Math.min(...k.routes.map(r => r[3]));
     rows.forEach((row, i) => setTimeout(() => {
       $('.rval', row).classList.remove('loading');
@@ -135,14 +135,26 @@ $$('.count').forEach(el => { const host = el.closest('.rv'); host ? host.addEven
 const cmp = $('#compare');
 cmp && cmp.addEventListener('reveal', () => $$('.cmp-fill', cmp).forEach((f, i) => setTimeout(() => f.style.width = f.dataset.w + '%', 300 + i * 250)), { once: true });
 
-/* steps: a coin travels with scroll and lights each step */
+/* steps: the line runs from the first icon to the last (under the icons), a coin travels it with scroll */
 const stepsEl = $('#steps');
 function steps() {
   if (!stepsEl) return;
-  const r = stepsEl.getBoundingClientRect(), p = Math.max(0, Math.min(1, (innerHeight * .78 - r.top) / (r.height * .9 + innerHeight * .25)));
+  const line = $('.steps-line', stepsEl), icos = $$('.s-ico', stepsEl), box = stepsEl.getBoundingClientRect();
+  const c = icos.map(i => { const r = i.getBoundingClientRect(); return [r.left + r.width / 2 - box.left, r.top + r.height / 2 - box.top]; });
+  const first = c[0], last = c[c.length - 1], vertical = Math.abs(last[0] - first[0]) < 4;
+  line.classList.toggle('v', vertical);
+  const len = vertical ? last[1] - first[1] : last[0] - first[0];
+  Object.assign(line.style, vertical
+    ? { left: first[0] - 1 + 'px', top: first[1] + 'px', width: '2px', height: len + 'px' }
+    : { left: first[0] + 'px', top: first[1] - 1 + 'px', width: len + 'px', height: '2px' });
+  let p;
+  if (vertical) p = (innerHeight * .62 - (box.top + first[1])) / len;
+  else p = (innerHeight * .78 - box.top) / (box.height * .9 + innerHeight * .25);
+  p = Math.max(0, Math.min(1, p));
   stepsEl.style.setProperty('--p', (p * 100).toFixed(1) + '%');
-  $$('.step', stepsEl).forEach((s, i, a) => s.classList.toggle('lit', p >= i / (a.length - 1) - .02));
+  $$('.step', stepsEl).forEach((st, i) => { const at = len ? ((vertical ? c[i][1] - first[1] : c[i][0] - first[0]) / len) : 0; st.classList.toggle('lit', p >= at - .01); });
 }
+addEventListener('resize', steps);
 onScroll();
 
 /* claim phone: options and currencies cycle */

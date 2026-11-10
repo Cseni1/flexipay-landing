@@ -19,9 +19,9 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css?v=1">
-<link rel="stylesheet" href="assets/fp.css?v=1">
+<link rel="stylesheet" href="assets/fp.css?v=2">
 <script>document.documentElement.classList.add('js')</script>
-<script defer src="assets/fp.js?v=1"></script>
+<script defer src="assets/fp.js?v=2"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://getflexipay.app/#org","name":"FlexiWork","legalName":"FLEXIWORK LTD","url":"https://joinflexiwork.co.uk/","email":"hello@getflexipay.app","identifier":{"@type":"PropertyValue","propertyID":"Companies House company number","value":"17116161"},"address":{"@type":"PostalAddress","streetAddress":"71-75 Shelton Street, Covent Garden","addressLocality":"London","postalCode":"WC2H 9JQ","addressCountry":"GB"}},{"@type":"WebSite","@id":"https://getflexipay.app/#website","name":"FlexiPay","url":"https://getflexipay.app/","publisher":{"@id":"https://getflexipay.app/#org"}},{"@type":"SoftwareApplication","name":"FlexiPay","url":"https://getflexipay.app/","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Payout aggregator built on Solana: compares eligible payout routes on every payment and routes through the one that delivers the most to the recipient. In development; early access.","publisher":{"@id":"https://getflexipay.app/#org"}}]}</script>
 </head>
 <body>
@@ -46,11 +46,11 @@
   <div class="shell hero-grid">
     <div>
       <span class="chip rv"><span class="dot"></span> Payout aggregator · Built on Solana · Early access</span>
-      <h1 class="words">Every route. One payment. <span class="grad">The best one wins.</span></h1>
+      <h1 class="words">Every route.<br>One payment.<br><span class="grad">The best one wins.</span></h1>
       <p class="lead rv" style="--d:.25s">FlexiPay asks every payout partner for a quote, routes through the one that delivers the most, and settles on chain. You pay by bank, wallet or crypto. They get paid into their <span class="rotator" aria-hidden="true"><span class="on">bank account.</span><span>e-wallet.</span><span>crypto wallet.</span><span>FlexiPay wallet.</span></span><span class="sr-only" style="position:absolute;left:-9999px">bank, e-wallet or crypto wallet.</span></p>
       <div class="hero-ctas rv" style="--d:.4s">
         <a class="btn btn-primary magnet" href="#access">Get early access <span class="arr">↗</span></a>
-        <a class="btn btn-ghost magnet" href="#demo"><span class="play" aria-hidden="true"></span> Watch the 75s demo</a>
+        <a class="btn btn-ghost magnet" href="#demo"><span class="play" aria-hidden="true"></span> Watch the 1-min demo</a>
       </div>
       <div class="hero-meta rv" style="--d:.55s"><span class="chip">No subscription</span><span class="chip">Fee per payment, shown up front</span><span class="chip">Pay by link</span></div>
     </div>
@@ -183,9 +183,9 @@
 <section class="section" id="demo"><div class="shell">
   <div class="center rv"><span class="kicker">Product demo</span>
     <h2 class="h2 words">See it <span class="grad">working.</span></h2>
-    <p class="lead">£100 to Maria in the Philippines, start to finish: the live quote, the route picked, every step tracked, then what the receiver sees. 75 seconds.</p></div>
+    <p class="lead">£100 to Maria in the Philippines, start to finish: the live quote, the route picked, every step tracked, then what the receiver sees. About a minute.</p></div>
   <div class="video-wrap panel glow-border rv">
-    <video controls playsinline preload="none" poster="assets/flexipay-demo-poster.png"><source src="assets/flexipay-demo.mp4" type="video/mp4">Your browser can't play this video. <a href="assets/flexipay-demo.mp4">Download it</a>.</video>
+    <video controls playsinline preload="none" poster="assets/flexipay-demo-poster.jpg"><source src="assets/flexipay-demo-60fps.mp4" type="video/mp4">Your browser can't play this video. <a href="assets/flexipay-demo-60fps.mp4">Download it</a>.</video>
   </div>
   <p class="note video-note">Recorded on the FlexiPay prototype with sandbox partner quotes. No real money moves in this demo.</p>
 </div></section>
@@ -219,7 +219,7 @@
     <div class="card panel rv" style="--d:.1s"><b class="grad">Up front</b><p>FlexiPay fee, shown in every quote</p></div>
     <div class="card panel rv" style="--d:.2s"><b class="grad">Included</b><p>Network and partner costs, in the same quote</p></div>
   </div>
-  <div class="center rv" style="margin-top:110px"><span class="kicker">Roadmap</span>
+  <div class="center rv" style="margin-top:clamp(56px,8vw,96px)"><span class="kicker">Roadmap</span>
     <h2 class="h2 words">Big vision. <span class="grad">One route at a time.</span></h2></div>
   <div class="road">
     <div class="card panel rv"><span class="state"><span class="dot"></span> Now · testing</span><h3>The working MVP</h3><p>Quotes from multiple partners, best-route selection, pay by link and on-chain settlement, running on partner sandboxes and Solana devnet.</p></div>

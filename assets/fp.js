@@ -213,7 +213,7 @@ if (fine && !calm) {
 }
 
 /* early access form: saves the sign-up to the FlexiPay waitlist sheet; falls back to a pre-filled email */
-const WAITLIST_URL = '';
+const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbyLsIoS1ShG8i8_aNEBOf4XTHwo6QuIc1INnF5lGlBrjZ83eZbEO2xtjRTtHN_R5G7DrA/exec';
 const form = $('#enquiry-form');
 form && form.addEventListener('submit', async e => {
   e.preventDefault();

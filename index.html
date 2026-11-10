@@ -19,9 +19,9 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css?v=1">
-<link rel="stylesheet" href="assets/fp.css?v=2">
+<link rel="stylesheet" href="assets/fp.css?v=3">
 <script>document.documentElement.classList.add('js')</script>
-<script defer src="assets/fp.js?v=2"></script>
+<script defer src="assets/fp.js?v=3"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://getflexipay.app/#org","name":"FlexiWork","legalName":"FLEXIWORK LTD","url":"https://joinflexiwork.co.uk/","email":"hello@getflexipay.app","identifier":{"@type":"PropertyValue","propertyID":"Companies House company number","value":"17116161"},"address":{"@type":"PostalAddress","streetAddress":"71-75 Shelton Street, Covent Garden","addressLocality":"London","postalCode":"WC2H 9JQ","addressCountry":"GB"}},{"@type":"WebSite","@id":"https://getflexipay.app/#website","name":"FlexiPay","url":"https://getflexipay.app/","publisher":{"@id":"https://getflexipay.app/#org"}},{"@type":"SoftwareApplication","name":"FlexiPay","url":"https://getflexipay.app/","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Payout aggregator built on Solana: compares eligible payout routes on every payment and routes through the one that delivers the most to the recipient. In development; early access.","publisher":{"@id":"https://getflexipay.app/#org"}}]}</script>
 </head>
 <body>
@@ -250,9 +250,11 @@
     </div>
     <form class="ea" id="enquiry-form" novalidate>
       <label for="name">Your name<input id="name" name="name" autocomplete="name" required placeholder="Alex Morgan"></label>
+      <label for="email">Email<input id="email" name="email" type="email" autocomplete="email" required placeholder="alex@example.com"></label>
+      <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
       <label for="interest">I'm interested in FlexiPay for<select id="interest" name="interest"><option>Personal payments</option><option>My business</option><option>My platform / API access</option><option>A payment partnership</option></select></label>
       <button class="btn btn-primary magnet" type="submit">Request early access <span class="arr">↗</span></button>
-      <p class="note">Opens an email to hello@getflexipay.app. Nothing is sent until you press send in your email app.</p>
+      <p class="note">We only use your details to contact you about early access. See our <a href="privacy.html">privacy notice</a>.</p>
       <p id="form-status" role="status"></p>
     </form>
   </div>

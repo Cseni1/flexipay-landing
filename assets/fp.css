@@ -354,3 +354,6 @@ form.ea{display:grid;gap:14px}
   .js .rv,.js .words .w{opacity:1;translate:none;filter:none;rotate:none}
   html{scroll-behavior:auto}
 }
+
+.ea .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ea .note a{color:var(--cyan)}

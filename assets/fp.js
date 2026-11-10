@@ -212,17 +212,32 @@ if (fine && !calm) {
   });
 }
 
-/* early access form: opens a pre-filled email (nothing is sent by the website) */
+/* early access form: saves the sign-up to the FlexiPay waitlist sheet; falls back to a pre-filled email */
+const WAITLIST_URL = '';
 const form = $('#enquiry-form');
-form && form.addEventListener('submit', e => {
+form && form.addEventListener('submit', async e => {
   e.preventDefault();
-  const nameEl = $('#name'), name = nameEl.value.trim();
+  const nameEl = $('#name'), emailEl = $('#email'), status = $('#form-status'), btn = $('button[type=submit]', form);
+  const name = nameEl.value.trim(), email = emailEl.value.trim(), interest = $('#interest').value;
   if (!name) { nameEl.focus(); return; }
-  const interest = $('#interest').value;
-  const subject = 'FlexiPay early access — ' + interest;
-  const body = 'Hello FlexiPay,\n\nMy name is ' + name + '. I’m interested in FlexiPay for ' + interest.toLowerCase() + '.\n\nHere’s what I’d like to use it for:\n\nCountries / currencies I’m interested in:\n\nPlease let me know about suitable early access.\n\nThank you,\n' + name;
-  location.href = 'mailto:hello@getflexipay.app?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  $('#form-status').textContent = 'Your email app should open with a draft. Press send there to make your enquiry. If it doesn’t open, email hello@getflexipay.app directly.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailEl.focus(); status.textContent = 'Please enter a valid email address.'; return; }
+  if (form.website.value) return;
+  if (!WAITLIST_URL) {
+    const body = 'Hello FlexiPay,\n\nMy name is ' + name + ' (' + email + '). I’m interested in FlexiPay for ' + interest.toLowerCase() + '.\n\nThank you,\n' + name;
+    location.href = 'mailto:hello@getflexipay.app?subject=' + encodeURIComponent('FlexiPay early access — ' + interest) + '&body=' + encodeURIComponent(body);
+    status.textContent = 'Your email app should open with a draft. Press send there. If it doesn’t open, email hello@getflexipay.app directly.';
+    return;
+  }
+  const q = new URLSearchParams(location.search);
+  const data = new URLSearchParams({ name, email, interest, source: q.get('utm_source') || q.get('ref') || document.referrer || 'direct', page: location.pathname });
+  btn.disabled = true; status.textContent = 'Saving…';
+  try {
+    await fetch(WAITLIST_URL, { method: 'POST', mode: 'no-cors', body: data });
+    form.reset(); status.textContent = 'You’re on the list. We’ll email ' + email + ' when your early access is ready.';
+  } catch (err) {
+    status.textContent = 'That didn’t go through. Please try again, or email hello@getflexipay.app.';
+  }
+  btn.disabled = false;
 });
 const year = $('#year'); if (year) year.textContent = new Date().getFullYear();
 })();

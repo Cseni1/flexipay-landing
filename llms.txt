@@ -1,0 +1,18 @@
+# FlexiPay
+
+> FlexiPay (FlexiPay by FlexiWork, website getflexipay.app) is a payout aggregator in development, built on Solana. It connects many payout and on/off-ramp partners, asks every eligible route for a quote on each payment and routes through the one that delivers the most to the recipient. The sender can pay by bank, wallet or crypto; the recipient chooses to be paid into a bank account, an e-wallet, a crypto wallet or a FlexiPay wallet. Settlement uses stablecoins on Solana. FlexiPay is the technology that routes payments; licensed partners handle the regulated steps. It is not a bank.
+
+## Key facts
+- Status: in development. The MVP runs on partner sandboxes and Solana devnet; no real money moves yet. Early access by request (hello@getflexipay.app).
+- Pricing model: a fee per payment shown in the quote, no subscription, no minimum. No promise of the lowest price on every payment.
+- Sandbox example: for the same £100 to the Philippines, the best of two partner routes delivered PHP 7,771.93 against PHP 7,372.88 for the next best (5.4% more).
+- Pay by link: the sender starts with an email or phone number; the recipient chooses currency and payout method; unclaimed money returns to the sender.
+- For: people sending money abroad, businesses paying contractors and suppliers, and platforms that need payouts through one API.
+- Company: FLEXIWORK LTD (trading as FlexiWork), company number 17116161, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.
+
+## Pages
+- [Home](https://getflexipay.app/)
+- [Product demo video](https://getflexipay.app/demo/)
+
+## More from FlexiWork
+- FlexiWork (https://joinflexiwork.co.uk/), Starter (https://getstarter.app/), Stars (https://morestars.app/), Regulars (https://moreregulars.app/)

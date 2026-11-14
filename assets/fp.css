@@ -240,7 +240,7 @@ p{margin:0}
 
 /* ---------- demo ---------- */
 .video-wrap{margin-top:52px;padding:10px;border-radius:30px}
-.video-wrap video{width:100%;aspect-ratio:1440/900;border-radius:22px;background:#0f1124;object-fit:cover}
+.video-wrap video{width:100%;aspect-ratio:16/9;border-radius:22px;background:#0f1124;object-fit:cover}
 .video-note{margin-top:14px;text-align:center}
 
 /* ---------- audiences ---------- */

@@ -232,7 +232,9 @@ form && form.addEventListener('submit', async e => {
   const data = new URLSearchParams({ name, email, interest, source: q.get('utm_source') || q.get('ref') || document.referrer || 'direct', page: location.pathname });
   btn.disabled = true; status.textContent = 'Saving…';
   try {
-    await fetch(WAITLIST_URL, { method: 'POST', mode: 'no-cors', body: data });
+    const res = await fetch(WAITLIST_URL, { method: 'POST', body: data });
+    const reply = (await res.text()).trim();
+    if (!res.ok || reply !== 'ok') throw new Error(reply || 'HTTP ' + res.status);
     form.reset(); status.textContent = 'You’re on the list. We’ll email ' + email + ' when your early access is ready.';
   } catch (err) {
     status.textContent = 'That didn’t go through. Please try again, or email hello@getflexipay.app.';
